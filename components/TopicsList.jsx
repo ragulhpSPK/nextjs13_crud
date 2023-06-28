@@ -1,26 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RemoveBtn from "./RemoveBtn";
 import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
+import axios from "axios";
 
-const getTopics = async () => {
-  try {
-    const res = await fetch("http://localhost:3001/api/topics", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("failed to fetch");
+// const getTopics = async () => {
+//   try {
+//     const res = await fetch("http://localhost:3001/api/topics", {
+//       cache: "no-store",
+//     });
+//     if (!res.ok) {
+//       throw new Error("failed to fetch");
+//     }
+//     return res.json();
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+function TopicsList() {
+  const [topics, setTopics] = useState([]);
+
+  useEffect(async () => {
+    try {
+      const res = await axios.get(`http://localhost:3000/api/topics`);
+      setTopics(res.data.topics);
+    } catch (err) {
+      console.log(err);
     }
-    return res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
+  }, []);
 
-async function TopicsList() {
-  const { topics } = await getTopics();
   return (
     <>
       {topics.map((topic, i) => {
@@ -31,7 +42,7 @@ async function TopicsList() {
           >
             <div>
               <h2 className="font-bold text-2xl ">{topic.title}</h2>
-              <div>{topic.description}</div>
+              <div>hiiii{topic.description}</div>
             </div>
             <div className="flex gap-2 ">
               <RemoveBtn id={topic._id} />
