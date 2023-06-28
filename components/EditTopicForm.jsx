@@ -11,13 +11,16 @@ function EditTopicForm({ id, titles, descriptions }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, description }),
-      });
+      const res = await fetch(
+        `https://nextjs13-crud.vercel.app/api/topics/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title, description }),
+        }
+      );
 
       router.push("/");
 

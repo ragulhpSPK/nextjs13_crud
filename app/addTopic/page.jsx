@@ -16,7 +16,7 @@ function AddTopic() {
       return;
     }
     try {
-      const res = await fetch("nextjs13-crud.vercel.app/api/topics", {
+      const res = await fetch("https://nextjs13-crud.vercel.app/api/topics", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

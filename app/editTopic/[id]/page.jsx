@@ -10,7 +10,9 @@ const Page = ({ params }) => {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/topics/${id}`);
+      const res = await axios.get(
+        `https://nextjs13-crud.vercel.app/api/topics/${id}`
+      );
       setData(res.data.topic);
     } catch (err) {
       console.log(err);
