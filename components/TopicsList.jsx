@@ -25,7 +25,7 @@ function TopicsList() {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/api/topics`);
+      const res = await axios.get(`nextjs13-crud.vercel.app/api/topics`);
       setTopics(res.data.topics);
     } catch (err) {
       console.log(err);

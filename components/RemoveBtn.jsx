@@ -6,7 +6,7 @@ function RemoveBtn({ id }) {
     console.log(id);
     const confirmed = confirm("Are you sure you want to delete");
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+      const res = await fetch(`nextjs13-crud.vercel.app/api/topics?id=${id}`, {
         method: "DELETE",
       });
     }
